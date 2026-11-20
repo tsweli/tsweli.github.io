@@ -1,1 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Collective Action Problem — Tswelopele Moshe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+  /* Essay header */
+  .essay-header { margin-bottom: 3rem; }
+  .essay-back { font-size: 0.8125rem; color: var(--ink-3); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 1.5rem; }
+  .essay-back:hover { color: var(--ink); }
+  .essay-back-arrow { font-size: 1rem; line-height: 1; }
 
+  .essay-title-frame {
+    border: 3px solid var(--nd-black);
+    padding: 1.75rem;
+    position: relative;
+  }
+  .corner-tl { position: absolute; top: -3px;    left: -3px;  width: 18px; height: 18px; background: var(--nd-gold); }
+  .corner-tr { position: absolute; top: -3px;    right: -3px; width: 18px; height: 18px; background: var(--nd-cobalt); }
+  .corner-bl { position: absolute; bottom: -3px; left: -3px;  width: 18px; height: 18px; background: var(--nd-cobalt); }
+  .corner-br { position: absolute; bottom: -3px; right: -3px; width: 18px; height: 18px; background: var(--nd-gold); }
+
+  .essay-accent-line { display: flex; height: 5px; margin-bottom: 1.25rem; }
+  .essay-accent-line span { display: block; }
+  .essay-accent-line span:nth-child(1) { background: var(--nd-black);  width: 30px; }
+  .essay-accent-line span:nth-child(2) { background: var(--nd-cobalt); width: 12px; }
+  .essay-accent-line span:nth-child(3) { background: var(--nd-gold);   width: 8px; }
+  .essay-accent-line span:nth-child(4) { background: var(--nd-red);    width: 12px; }
+  .essay-accent-line span:nth-child(5) { background: var(--nd-black);  flex: 1; }
+
+  .essay-h1 { font-family: var(--serif); font-size: 2rem; font-weight: 400; line-height: 1.15; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
+  .essay-lede { font-family: var(--serif); font-size: 1.0625rem; font-style: italic; color: var(--ink-2); line-height: 1.7; max-width: 520px; margin-bottom: 1rem; }
+  .essay-meta-row { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+  .essay-meta-row span { font-size: 0.75rem; color: var(--ink-3); }
+
+  /* TOC */
+  .wiki-toc {
+    border-left: 5px solid var(--nd-black);
+    padding: 1rem 1.25rem;
+    margin-bottom: 2.5rem;
+    background: rgba(17,16,8,0.04);
+    position: relative;
+  }
+  .wiki-toc::before { content: ''; position: absolute; left: -5px; top: 0; width: 5px; height: 20px; background: var(--nd-gold); }
+  .wiki-toc::after  { content: ''; position: absolute; left: -5px; bottom: 0; width: 5px; height: 20px; background: var(--nd-cobalt); }
+  .wiki-toc-label { font-size: 0.6875rem; font-weight: 500; color: var(--ink-3); margin-bottom: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .wiki-toc ol { list-style: none; counter-reset: toc; padding: 0; }
+  .wiki-toc ol li { counter-increment: toc; display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.4rem; }
+  .wiki-toc ol li::before { content: counter(toc); font-size: 0.6875rem; color: var(--ink-3); min-width: 14px; }
+  .wiki-toc a { font-size: 0.875rem; color: var(--ink-2); text-decoration: none; }
+  .wiki-toc a:hover { color: var(--ink); }
+  .toc-status { font-size: 0.6875rem; color: var(--ink-3); margin-left: 4px; }
+
+  /* Wiki sections */
+  .wiki-section { margin-bottom: 3rem; padding-top: 1rem; }
+  .wiki-section + .wiki-section { border-top: 1px solid var(--rule); }
+
+  .wiki-section-title {
+    font-family: var(--serif);
+    font-size: 1.375rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .wiki-section-title::before {
+    content: '';
+    display: inline-block;
+    width: 12px; height: 12px;
+    background: var(--nd-gold);
+    flex-shrink: 0;
+    outline: 3px solid var(--nd-black);
+    outline-offset: 2px;
+  }
+
+  .wiki-title-rule { display: flex; height: 3px; margin-bottom: 1.1rem; }
+  .wiki-title-rule span { display: block; }
+  .wiki-title-rule span:nth-child(1) { background: var(--nd-black); width: 24px; }
+  .wiki-title-rule span:nth-child(2) { background: var(--nd-gold);  width: 8px; }
+  .wiki-title-rule span:nth-child(3) { background: var(--rule);     flex: 1; }
+
+  .wiki-body { font-size: 0.9375rem; line-height: 1.85; color: var(--ink-2); font-family: var(--serif); }
+  .wiki-body p { margin-bottom: 1.1rem; }
+  .wiki-body p:last-child { margin-bottom: 0; }
+  .wiki-body em { font-style: italic; }
+
+  .wiki-stub {
+    font-size: 0.8125rem;
+    color: var(--ink-3);
+    font-style: italic;
+    padding: 0.75rem 1rem;
+    border-left: 3px solid var(--nd-gold);
+    margin-top: 0.75rem;
+    font-family: var(--sans);
+    background: rgba(212,160,23,0.06);
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="sotho-band" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-name">Tswelopele Moshe</a>
+    <div class="nav-links">
+      <a href="../index.html#research">Research</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="index.html" class="active">Writing</a>
+    </div>
+  </div>
+</nav>
+<div class="nav-stripe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+<main>
+  <section style="padding-top: 0; margin-bottom: 0;">
+
+    <div class="essay-header">
+      <a class="essay-back" href="index.html"><span class="essay-back-arrow">←</span> All writing</a>
+      <div class="essay-title-frame">
+        <div class="corner-tl" aria-hidden="true"></div>
+        <div class="corner-tr" aria-hidden="true"></div>
+        <div class="corner-bl" aria-hidden="true"></div>
+        <div class="corner-br" aria-hidden="true"></div>
+        <div class="essay-accent-line" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        <h1 class="essay-h1">The Collective Action Problem</h1>
+        <p class="essay-lede">Why groups of rational individuals so reliably fail to produce outcomes that would benefit everyone — traced from political science through economics, game theory, and into the security protocols I work on.</p>
+        <div class="essay-meta-row">
+          <span>Tswelopele Moshe</span>
+          <span>In progress</span>
+          <span>6 sections</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wiki-toc">
+      <p class="wiki-toc-label">Contents</p>
+      <ol>
+        <li><a href="#w-intro">What is the collective action problem?</a></li>
+        <li><a href="#w-polisci">Political science: the problem of cooperation</a> <span class="toc-status">— draft</span></li>
+        <li><a href="#w-econ">Economics: public goods and free riding</a> <span class="toc-status">— stub</span></li>
+        <li><a href="#w-gametheory">Game theory: prisoners and stags</a> <span class="toc-status">— stub</span></li>
+        <li><a href="#w-infosec">Information security: protocols as collective action</a> <span class="toc-status">— stub</span></li>
+        <li><a href="#w-ostrom">Ostrom's escape: governing the commons</a> <span class="toc-status">— stub</span></li>
+      </ol>
+    </div>
+
+  </section>
+
+  <section>
+
+    <div class="wiki-section" id="w-intro">
+      <h2 class="wiki-section-title">What is the collective action problem?</h2>
+      <div class="wiki-title-rule" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="wiki-body">
+        <p>There is a gap between what is good for each person individually and what is good for everyone together. This gap is not a failure of intelligence or character. It is a structural feature of many situations, and understanding it is one of the more important things one can do to understand how the world works.</p>
+        <p>The collective action problem appears wherever a group could achieve something by coordinating — but where each individual, reasoning from their own position, finds it rational not to contribute. The result is that the thing never gets built, the resource gets destroyed, the standard never gets adopted, the security protocol never gets updated.</p>
+        <p>What makes this worth writing about is how the same underlying structure recurs across fields that rarely talk to each other: a political scientist studying state formation, an economist modelling carbon emissions, a game theorist analysing arms races, and a security engineer thinking about why TLS implementations drift from their specifications — are all, in a precise sense, looking at the same problem. These notes try to hold all of that together.</p>
+      </div>
+    </div>
+
+    <div class="wiki-section" id="w-polisci">
+      <h2 class="wiki-section-title">Political science: the problem of cooperation</h2>
+      <div class="wiki-title-rule" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="wiki-body">
+        <p>Mancur Olson's <em>The Logic of Collective Action</em> (1965) is the uncomfortable starting point. Olson's argument was that large groups, even when they share a common interest, tend not to act on it — not because members are ignorant of that interest, but precisely because each member knows that if the group succeeds, they will benefit whether or not they contributed. The incentive to free-ride is not a character flaw; it is built into the structure.</p>
+        <p>This was a direct challenge to the pluralist assumption that interest groups naturally form and act on shared interests. Olson showed that small groups are more effective than large ones — not despite having fewer members, but because of it. In a small group, each member's contribution visibly matters. Defection is noticeable. The logic inverts at scale.</p>
+        <div class="wiki-stub">More to come: selective incentives, the state as enforcement mechanism, Elinor Ostrom's challenge to Olson, and what this means for democratic governance.</div>
+      </div>
+    </div>
+
+    <div class="wiki-section" id="w-econ">
+      <h2 class="wiki-section-title">Economics: public goods and free riding</h2>
+      <div class="wiki-title-rule" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="wiki-stub">Coming. The plan: non-excludability and non-rivalry as the formal conditions that make markets fail; the commons and the tragedy thereof; why carbon markets are hard; and what Pigou got right and wrong.</div>
+    </div>
+
+    <div class="wiki-section" id="w-gametheory">
+      <h2 class="wiki-section-title">Game theory: prisoners and stags</h2>
+      <div class="wiki-title-rule" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="wiki-stub">Coming. The prisoner's dilemma is the textbook case, but the stag hunt is more interesting — it asks not whether to defect, but whether to trust. The difference matters. Also: iterated games, reputation, and why the shadow of the future changes everything.</div>
+    </div>
+
+    <div class="wiki-section" id="w-infosec">
+      <h2 class="wiki-section-title">Information security: protocols as collective action</h2>
+      <div class="wiki-title-rule" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="wiki-stub">Coming. Security protocols require every participant to follow a specification — but implementations drift. No single implementer has an incentive to maintain strict conformance if others don't. The formal verification problem is, in one reading, a collective action problem. And the solution — automated model extraction — changes the incentive structure.</div>
+    </div>
+
+    <div class="wiki-section" id="w-ostrom">
+      <h2 class="wiki-section-title">Ostrom's escape: governing the commons</h2>
+      <div class="wiki-title-rule" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="wiki-stub">Coming. Elinor Ostrom's Nobel-winning work showed that the tragedy of the commons is not inevitable — that communities develop sophisticated governance structures to manage shared resources without privatisation or state control. The conditions under which this works, and why they are so often absent at scale, are worth understanding carefully.</div>
+    </div>
+
+  </section>
+</main>
+
+<div class="sotho-footer-band" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span>
+</div>
+<footer>
+  <span>Tswelopele Moshe</span>
+  <span>tswelo.com</span>
+</footer>
+
+</body>
+</html>
