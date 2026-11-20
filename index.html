@@ -1,13 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reclamation</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tswelopele Moshe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  .header-frame { border: 3px solid var(--nd-black); padding: 1.75rem 1.75rem 1.5rem; margin-bottom: 3.5rem; position: relative; }
+  .corner-tl { position: absolute; top: -3px; left: -3px; width: 18px; height: 18px; background: var(--nd-gold); }
+  .corner-tr { position: absolute; top: -3px; right: -3px; width: 18px; height: 18px; background: var(--nd-cobalt); }
+  .corner-bl { position: absolute; bottom: -3px; left: -3px; width: 18px; height: 18px; background: var(--nd-cobalt); }
+  .corner-br { position: absolute; bottom: -3px; right: -3px; width: 18px; height: 18px; background: var(--nd-gold); }
+  .header-accent-line { display: flex; height: 5px; margin-bottom: 1.25rem; }
+  .header-accent-line span { display: block; }
+  .header-accent-line span:nth-child(1) { background: var(--nd-black); width: 30px; }
+  .header-accent-line span:nth-child(2) { background: var(--nd-red);   width: 12px; }
+  .header-accent-line span:nth-child(3) { background: var(--nd-gold);  width: 8px; }
+  .header-accent-line span:nth-child(4) { background: var(--nd-cobalt);width: 12px; }
+  .header-accent-line span:nth-child(5) { background: var(--nd-black); flex: 1; }
+  .header-name { font-family: var(--serif); font-size: 2.25rem; font-weight: 400; line-height: 1.1; margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+  .header-desc { font-size: 0.9375rem; color: var(--ink-2); line-height: 1.65; max-width: 520px; margin-bottom: 1.25rem; }
+  .header-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+  .header-meta a, .header-meta span { font-size: 0.8125rem; color: var(--ink-3); text-decoration: none; }
+  .header-meta a:hover { color: var(--ink); }
+
+  .entry { margin-bottom: 1.75rem; }
+  .entry-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.2rem; }
+  .entry-title { font-family: var(--serif); font-size: 1.0625rem; font-weight: 400; }
+  .entry-date { font-size: 0.75rem; color: var(--ink-3); white-space: nowrap; flex-shrink: 0; }
+  .entry-sub { font-size: 0.8125rem; color: var(--ink-3); margin-bottom: 0.4rem; }
+  .entry-body { font-size: 0.875rem; color: var(--ink-2); line-height: 1.65; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.6rem; }
+  .tag { font-size: 0.6875rem; padding: 2px 8px; border: 1px solid var(--nd-black); color: var(--nd-black); background: transparent; border-radius: 0; }
+
+  /* Writing index on homepage — just a teaser card */
+  .writing-teaser {
+    border: 3px solid var(--nd-black);
+    padding: 1.5rem;
+    position: relative;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    transition: background 0.15s;
+  }
+  .writing-teaser:hover { background: rgba(17,16,8,0.03); }
+  .writing-teaser .wt-corner-tl { position: absolute; top: -3px; left: -3px; width: 14px; height: 14px; background: var(--nd-cobalt); }
+  .writing-teaser .wt-corner-br { position: absolute; bottom: -3px; right: -3px; width: 14px; height: 14px; background: var(--nd-cobalt); }
+  .writing-teaser-label { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.6rem; }
+  .writing-teaser-title { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; margin-bottom: 0.5rem; }
+  .writing-teaser-desc { font-size: 0.875rem; color: var(--ink-2); line-height: 1.65; max-width: 480px; }
+  .writing-teaser-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
+  .writing-teaser-count { font-size: 0.75rem; color: var(--ink-3); }
+  .writing-teaser-arrow { font-size: 0.8125rem; color: var(--nd-cobalt); font-weight: 500; }
+
+  @media (max-width: 520px) {
+    .entry-header { flex-direction: column; gap: 0.1rem; }
+    .header-frame { padding: 1.25rem; }
+    .header-name { font-size: 1.75rem; }
+  }
+</style>
 </head>
 <body>
 
+<div class="sotho-band" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-name">Tswelopele Moshe</a>
+    <div class="nav-links">
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="writing/index.html">Writing</a>
+    </div>
+  </div>
+</nav>
+<div class="nav-stripe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+<main>
+
+  <section id="about" style="margin-bottom: 0; padding-top: 0;">
+    <div class="header-frame">
+      <div class="corner-tl" aria-hidden="true"></div>
+      <div class="corner-tr" aria-hidden="true"></div>
+      <div class="corner-bl" aria-hidden="true"></div>
+      <div class="corner-br" aria-hidden="true"></div>
+      <div class="header-accent-line" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <h1 class="header-name">Tswelopele Moshe</h1>
+      <p class="header-desc">PhD researcher at the University of Cape Town and CISPA Helmholtz Center for Information Security, working on the mathematical foundations of cryptographic protocol verification. Previously in cybersecurity consulting and technology audit across Africa.</p>
+      <div class="header-meta">
+        <a href="mailto:me@tswelo.com">me@tswelo.com</a>
+        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        <span>Johannesburg · Saarbrücken</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="nd-divider" aria-hidden="true"><div class="nd-bar"></div><div class="nd-step"></div><div class="nd-step2"></div><div class="nd-step3"></div></div>
+    <p class="section-label">Research</p>
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Learning Cryptographic Protocol Models</span>
+        <span class="entry-date">Dec 2026 — present</span>
+      </div>
+      <p class="entry-sub">PhD · UCT & CISPA Helmholtz Center · Supervisors: Robert Künnemann, Jonathan Shock</p>
+      <p class="entry-body">Developing sheaf-theoretic foundations for inferring formal security protocol models directly from implementation traces — without requiring a prior specification. The goal is a polynomial-time prototype that can find bugs in deployed protocols such as EMV and SIM card authentication.</p>
+      <div class="tags">
+        <span class="tag">Topos Theory</span>
+        <span class="tag">Automata Learning</span>
+        <span class="tag">Tamarin</span>
+        <span class="tag">Protocol Fuzzing</span>
+        <span class="tag">Formal Verification</span>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">A Geometric View on Automata Learning</span>
+        <span class="entry-date">2026</span>
+      </div>
+      <p class="entry-sub">MSc Thesis · University of Cape Town</p>
+      <p class="entry-body">Showed that the minimality condition in automata learning — across Mealy machines, DFAs, and weighted automata — can be expressed as a sheaf condition. This unifies learning algorithms across computational paradigms and enables inference of first-order security protocol models from implementation data.</p>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="nd-divider green" aria-hidden="true"><div class="nd-bar"></div><div class="nd-step"></div><div class="nd-step2"></div><div class="nd-step3"></div></div>
+    <p class="section-label">Education</p>
+    <div class="entry">
+      <div class="entry-header"><span class="entry-title">PhD Applied Mathematics</span><span class="entry-date">2026 — present</span></div>
+      <p class="entry-sub">UCT & CISPA Helmholtz Center, Saarbrücken</p>
+    </div>
+    <div class="entry">
+      <div class="entry-header"><span class="entry-title">MSc Applied Mathematics</span><span class="entry-date">2024 — 2026</span></div>
+      <p class="entry-sub">UCT & CISPA Helmholtz Center</p>
+    </div>
+    <div class="entry">
+      <div class="entry-header"><span class="entry-title">BSc (Hons) Mathematics</span><span class="entry-date">2022 — 2023</span></div>
+      <p class="entry-sub">University of Cape Town</p>
+    </div>
+    <div class="entry">
+      <div class="entry-header"><span class="entry-title">BSc Mathematics and Physics</span><span class="entry-date">2019 — 2022</span></div>
+      <p class="entry-sub">University of Cape Town</p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="nd-divider red" aria-hidden="true"><div class="nd-bar"></div><div class="nd-step"></div><div class="nd-step2"></div><div class="nd-step3"></div></div>
+    <p class="section-label">Industry</p>
+    <div class="entry">
+      <div class="entry-header"><span class="entry-title">MTN Group — Technology Audit, Cybersecurity</span><span class="entry-date">2024 — 2026</span></div>
+      <p class="entry-sub">Johannesburg, South Africa</p>
+      <p class="entry-body">Provided cybersecurity audit support across MTN's African footprint — Nigeria, South Africa, Kenya, Botswana, South Sudan. Led a continent-wide Vulnerability Management and SIM Registration (KYC) audit with technical control evaluations.</p>
+    </div>
+    <div class="entry">
+      <div class="entry-header"><span class="entry-title">MWR CyberSec — Cybersecurity Consultant</span><span class="entry-date">2023 — 2024</span></div>
+      <p class="entry-sub">Johannesburg, South Africa</p>
+      <p class="entry-body">Security assessments across finance, telecoms, and insurance sectors. Specialised in mobile application penetration testing, including card and PIN reverse engineering.</p>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="nd-divider" aria-hidden="true"><div class="nd-bar"></div><div class="nd-step"></div><div class="nd-step2"></div><div class="nd-step3"></div></div>
+    <p class="section-label">Recognition</p>
+    <div class="entry">
+      <div class="entry-header"><span class="entry-title">Allan Gray Orbis Foundation Fellow</span><span class="entry-date">2022</span></div>
+      <p class="entry-body">Selected as one of approximately 1,000 Fellows over the Foundation's 20-year history, from a nationally competitive pool, on the basis of academic excellence and entrepreneurial potential.</p>
+    </div>
+  </section>
+
+  <section id="writing">
+    <div class="nd-divider green" aria-hidden="true"><div class="nd-bar"></div><div class="nd-step"></div><div class="nd-step2"></div><div class="nd-step3"></div></div>
+    <p class="section-label">Writing</p>
+    <a class="writing-teaser" href="writing/index.html">
+      <div class="wt-corner-tl" aria-hidden="true"></div>
+      <div class="wt-corner-br" aria-hidden="true"></div>
+      <p class="writing-teaser-label">Essays</p>
+      <p class="writing-teaser-title">The Collective Action Problem</p>
+      <p class="writing-teaser-desc">Why groups of rational individuals so reliably fail to produce outcomes that would benefit everyone — traced across political science, economics, game theory, and information security.</p>
+      <div class="writing-teaser-foot">
+        <span class="writing-teaser-count">1 essay · 6 sections</span>
+        <span class="writing-teaser-arrow">Read all writing</span>
+      </div>
+    </a>
+  </section>
+
+</main>
+
+<div class="sotho-footer-band" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span>
+</div>
+<footer>
+  <span>Tswelopele Moshe</span>
+  <span>tswelo.com</span>
+</footer>
+
 </body>
 </html>
-
-
