@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing — Tswelopele Moshe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+  .page-title { font-family: var(--serif); font-size: 2rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+  .page-desc { font-size: 0.9375rem; color: var(--ink-2); line-height: 1.65; max-width: 480px; margin-bottom: 3rem; }
 
+  .essay-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 3px solid var(--nd-black);
+    padding: 1.5rem 1.5rem 1.25rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    transition: background 0.15s;
+  }
+  .essay-card:hover { background: rgba(17,16,8,0.03); }
+
+  /* Ndebele corner blocks, alternating per card */
+  .essay-card .ec-corner-tl,
+  .essay-card .ec-corner-br { position: absolute; width: 14px; height: 14px; }
+  .essay-card .ec-corner-tl { top: -3px; left: -3px; }
+  .essay-card .ec-corner-br { bottom: -3px; right: -3px; }
+
+  .essay-card:nth-child(1) .ec-corner-tl { background: var(--nd-gold); }
+  .essay-card:nth-child(1) .ec-corner-br { background: var(--nd-gold); }
+  .essay-card:nth-child(2) .ec-corner-tl { background: var(--nd-cobalt); }
+  .essay-card:nth-child(2) .ec-corner-br { background: var(--nd-cobalt); }
+  .essay-card:nth-child(3) .ec-corner-tl { background: var(--nd-red); }
+  .essay-card:nth-child(3) .ec-corner-br { background: var(--nd-red); }
+  .essay-card:nth-child(4) .ec-corner-tl { background: var(--nd-green); }
+  .essay-card:nth-child(4) .ec-corner-br { background: var(--nd-green); }
+
+  /* sotho stripe accent at top of each card */
+  .essay-card-stripe { display: flex; height: 4px; margin-bottom: 1.1rem; }
+  .essay-card-stripe span { display: block; }
+  .essay-card-stripe span:nth-child(1) { background: var(--nd-black);  width: 20px; }
+  .essay-card-stripe span:nth-child(2) { background: var(--nd-gold);   width: 8px; }
+  .essay-card-stripe span:nth-child(3) { background: var(--nd-black);  width: 4px; }
+  .essay-card-stripe span:nth-child(4) { background: var(--rule);      flex: 1; }
+
+  .essay-title { font-family: var(--serif); font-size: 1.3125rem; font-weight: 400; margin-bottom: 0.4rem; }
+  .essay-desc { font-size: 0.875rem; color: var(--ink-2); line-height: 1.65; max-width: 500px; margin-bottom: 1rem; }
+  .essay-meta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+  .essay-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .essay-tag { font-size: 0.6875rem; padding: 2px 8px; border: 1px solid var(--nd-black); color: var(--nd-black); border-radius: 0; }
+  .essay-status { font-size: 0.75rem; color: var(--ink-3); }
+  .essay-read { font-size: 0.8125rem; color: var(--nd-cobalt); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="sotho-band" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-name">Tswelopele Moshe</a>
+    <div class="nav-links">
+      <a href="../index.html#research">Research</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="index.html" class="active">Writing</a>
+    </div>
+  </div>
+</nav>
+<div class="nav-stripe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+<main>
+  <section style="padding-top: 0;">
+    <div class="nd-divider" aria-hidden="true"><div class="nd-bar"></div><div class="nd-step"></div><div class="nd-step2"></div><div class="nd-step3"></div></div>
+    <h1 class="page-title">Writing</h1>
+    <p class="page-desc">Long-form notes on problems I find worth thinking through carefully. These are living documents — sections are added and revised over time.</p>
+
+    <a class="essay-card" href="collective-action.html">
+      <div class="ec-corner-tl" aria-hidden="true"></div>
+      <div class="ec-corner-br" aria-hidden="true"></div>
+      <div class="essay-card-stripe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      <p class="essay-title">The Collective Action Problem</p>
+      <p class="essay-desc">Why groups of rational individuals so reliably fail to produce outcomes that would benefit everyone, traced from Olson's political science through economics, game theory, and into the formal security protocols I work on.</p>
+      <div class="essay-meta">
+        <div class="essay-tags">
+          <span class="essay-tag">Political science</span>
+          <span class="essay-tag">Game theory</span>
+          <span class="essay-tag">Economics</span>
+          <span class="essay-tag">Information security</span>
+        </div>
+        <span class="essay-read">Read</span>
+      </div>
+      <div style="margin-top: 0.75rem;">
+        <span class="essay-status">6 sections · in progress</span>
+      </div>
+    </a>
+
+  </section>
+</main>
+
+<div class="sotho-footer-band" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span>
+</div>
+<footer>
+  <span>Tswelopele Moshe</span>
+  <span>tswelo.com</span>
+</footer>
+
+</body>
+</html>
